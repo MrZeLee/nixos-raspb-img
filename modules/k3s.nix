@@ -3,6 +3,7 @@
 {
   services.k3s = {
     enable = true;
+    package = pkgs.k3s_1_28;
     role = "agent";
     token = "your-secret-token-here"; # Replace this with a secure token
     clusterInit = false; # This node will be the first control plane node

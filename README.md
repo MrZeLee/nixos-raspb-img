@@ -24,3 +24,9 @@ nix build --builders "ssh://root@eu.nixbuild.net?ssh-key=$HOME/.ssh/nixbuild aar
 - SSH Key Authentication Used
 - Configured for maximum build flexibility and debugging
 ```
+
+### Check
+
+```bash
+kubectl create -f https://github.com/kyverno/kyverno/releases/download/v1.13.0/install.yaml
+```

@@ -12,6 +12,15 @@
   # Optional: Install useful kubernetes tools
   environment.systemPackages = with pkgs; [
     kubectl
+    nfs-utils
   ];
+
+  services.openiscsi = {
+    enable = true;
+    name = "${config.networking.hostName}-initiatorhost";
+  };
+
+  boot.supportedFilesystems = [ "nfs" ];
+  services.rpcbind.enable = true;
 }
 

@@ -35,7 +35,15 @@
           inherit specialArgs;
           system = system;
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = overlays; })
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = overlays;
+              environment.systemPackages = with pkgs; [
+                neovim
+                vim
+                git
+                hello
+              ];
+            })
             ./modules/hardware-configuration.nix
             ./modules/base.nix
             ./modules/builder.nix

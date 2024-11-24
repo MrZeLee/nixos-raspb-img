@@ -8,6 +8,7 @@
     # wireless.networks = {
     #   my_ssid.pskRaw = "...";
     # };
+    usePredictableInterfaceNames = false;
   };
 
 

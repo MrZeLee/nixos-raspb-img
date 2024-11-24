@@ -49,7 +49,7 @@
             ./modules/builder.nix
             ./modules/networking.nix
             ./modules/users.nix
-            ./modules/k3s.nix
+            # ./modules/k3s.nix
 
             # Anything else you like...
           ];

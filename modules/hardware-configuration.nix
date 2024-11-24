@@ -33,6 +33,12 @@
     kernelModules = [ ];
     extraModulePackages = [ ];
 
+    # Add kernel parameters to enable cgroup v2
+    kernelParams = [
+      "systemd.unified_cgroup_hierarchy=1"
+      "cgroup_enable=memory"
+    ];
+
   };
 
   # hardware.enableRedistributableFirmware = true;

@@ -1,10 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.05";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +9,6 @@
 
   outputs =
     { self
-    , nixos-generators
     , nixos-hardware
     , nixpkgs
     }@inputs:

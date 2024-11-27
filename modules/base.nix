@@ -2,7 +2,7 @@
 # Set the system state version. This should not be changed after initial installation.
     
 
-    system.stateVersion = "24.11";
+    system.stateVersion = "24.05";
 
     programs.ssh.extraConfig = ''
         Host eu.nixbuild.net

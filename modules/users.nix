@@ -40,5 +40,4 @@
     };
   };
   services.timesyncd.enable = true;
-  # services.getty.autologinUser = "mrzelee";
 }

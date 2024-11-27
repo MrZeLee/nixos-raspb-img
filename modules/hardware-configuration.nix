@@ -30,7 +30,15 @@
     blacklistedKernelModules = [ "sun4i-drm" "drm" "drm_kms_helper" ];
     initrd.availableKernelModules = [ "xhci_pci" "uas" ];
     initrd.kernelModules = [ ];
-    kernelModules = [ ];
+    kernelModules = [ "br_netfilter"
+                      "ip_conntrack"
+                      "ip_vs"
+                      "ip_vs_rr"
+                      "ip_vs_wrr"
+                      "ip_vs_sh"
+                      "overlay"
+                      "nfs"
+                      "iscsi_tcp" ];
     extraModulePackages = [ ];
 
     # Add kernel parameters to enable cgroup v2
@@ -40,6 +48,11 @@
       "cgroup_enable=cpuset"
       "cgroup_memory=1"
     ];
+    kernel.sysctl = {
+      "net.bridge-nf-call-ip6tables" = 1;
+      "net.bridge-nf-call-iptables" = 1;
+      "net.ipv4.ip_forward" = 1;
+    };
 
   };
 

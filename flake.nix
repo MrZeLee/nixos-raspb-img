@@ -42,6 +42,7 @@
                 vim
                 git
                 hello
+                util-linux #used in longhorn k3s
               ];
             })
             ./modules/hardware-configuration.nix

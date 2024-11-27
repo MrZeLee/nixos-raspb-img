@@ -16,6 +16,17 @@ nix build --builders "ssh://root@eu.nixbuild.net?ssh-key=$HOME/.ssh/nixbuild aar
     --system aarch64-linux \
     --option keep-failed true \
     --option build-cores 0
+
+zstd \
+    -d result/sd-image/*.img.zst \
+    -o installer-sd-image.img
+
+diskutil unmountDisk /dev/diskN
+sudo dd \
+    if=..path/to/installer-sd-image.img \
+    of=/dev/diskN \
+    status=progress bs=1M
+diskutil eject /dev/diskN
 ```
 
 ### Build Details

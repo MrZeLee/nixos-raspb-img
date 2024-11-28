@@ -1,32 +1,38 @@
-# nixos-raspb-img
+# NixOS Raspberry Pi Configuration
 
-## Credits
+## Overview
 
-This project was inspired by and follows the guide from: [NixOS Raspberry Pi Headless Setup by Mukund
-Agrawal](https://blog.yaymukund.com/posts/nixos-raspberry-pi-nixbuild-headless/)
+This repository contains a NixOS configuration for a Raspberry Pi 4, managed using Nix Flakes. The configuration provides a reproducible and declarative system setup.
 
-## Build Process
+## Prerequisites
 
-The Raspberry Pi NixOS image was created using an external builder (`eu.nixbuild.net`) because the build requires an `aarch64-linux` system. The following
-command was used to build the image:
+- Raspberry Pi 4
+- NixOS-compatible SD card or storage device
+- Basic understanding of Nix and NixOS
+
+## Features
+
+- Declarative system configuration
+- K3s Kubernetes cluster support
+- Custom user configurations
+- Modular system setup
+
+## Installation
+
+### 1. Prepare NixOS SD Card
 
 ```bash
-nix build --builders "ssh://root@eu.nixbuild.net?ssh-key=$HOME/.ssh/nixbuild aarch64-linux - 100 1 big-parallel,benchmark"\
+# Clone this repository
+git clone https://github.com/yourusername/nixos-raspb-img.git
+cd nixos-raspb-img
+```
+
+### 2. Build and Switch Configuration
+
+```bash
+# Rebuild and switch to the new configuration
+nixos-rebuild switch \
+    --use-remote-sudo \
     --max-jobs 0 \
-    --system aarch64-linux \
-    --option keep-failed true \
-    --option build-cores 0
-```
-
-### Build Details
-- External Builder: `eu.nixbuild.net`
-- System Architecture: `aarch64-linux`
-- SSH Key Authentication Used
-- Configured for maximum build flexibility and debugging
-```
-
-### Check
-
-```bash
-kubectl create -f https://github.com/kyverno/kyverno/releases/download/v1.13.0/install.yaml
+    --flake .#mrzelee
 ```
